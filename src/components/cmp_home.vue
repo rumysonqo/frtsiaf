@@ -1,6 +1,11 @@
 <template>
     <v-container fluid>
       <v-layout class="elevation-1 pa-2">
+        <v-flex>
+          <spam class="text-h5 font-weight-light">Montos Totales de Ejecución Presupuestal</spam>
+        </v-flex>
+      </v-layout>
+      <v-layout class="elevation-9 pa-2">
       <v-flex xs3 class="mt-0 mr-2 elevation-10">
         <v-card
         class="mx-auto "
@@ -133,8 +138,14 @@
       </v-flex>
     </v-layout>
 
-
     <v-layout class="elevation-1 pa-2">
+      <v-flex>
+        <spam class="text-h5 font-weight-light">% de Ejecución Total y por Fuente de Financiamiento</spam>
+      </v-flex>
+    </v-layout>
+
+
+    <v-layout class="elevation-9 pa-2">
       <v-flex xs4 class="mt-0 mr-2 elevation-10">
         <v-card
         class="mx-auto "
@@ -309,7 +320,7 @@
     </v-layout>
 
 
-    <v-layout class="elevation-1 pa-2">
+    <v-layout class="elevation-9 pa-2">
       <v-flex xs4 class="mt-0 mr-2 elevation-10">
         <v-card
         class="mx-auto"
@@ -518,7 +529,370 @@
     </v-layout>
 
 
+    <v-layout class="elevation-1 pa-2">
+      <v-flex>
+        <spam class="text-h5 font-weight-light">% de Ejecución por Generica de Gasto </spam>
+      </v-flex>
+    </v-layout>
+
+
+    <v-layout class="elevation-9 pa-2">
+      
+
+
+      <v-flex xs6 class="mt-0 mr-2 elevation-10">
+        <v-card
+        class="mx-auto"
+        color="light-blue darken-4"
+        dark
+        height="500"
+        >
+        <v-card-title>
+          <v-icon
+            large
+            left
+          >
+          mdi-chart-pie
+          </v-icon>
+          <span class="text-h6 font-weight-bold">% de Ejecución por Generica 2.3</span>
+        </v-card-title>
+        <v-card-subtitle class="pb-0">
+          BIENES Y SERVICIOS
+        </v-card-subtitle>
+        <v-card-text class="text-h4 font-weight-bold text-lg-center">
+          <v-progress-circular
+            show-value
+            :rotate="270"
+            :size="320"
+            :width="60"
+            :thickness="0.4"
+            :value="this.eje_23"
+            color="lime accent-4"
+          >
+            {{ parseFloat(this.eje_23).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
+          </v-progress-circular>
+          
+        </v-card-text>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+            <v-icon left>
+              mdi-cash-multiple
+            </v-icon>
+            <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[2][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[2][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[2][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[2][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[2][1]-this.ejec_gen[2][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+
+
+        </v-card>
+      </v-flex>
+
+      <v-flex xs6 class="mt-0 mr-2 elevation-10">
+        <v-card
+        class="mx-auto"
+        color="light-blue darken-4"
+        dark
+        height="500"
+        >
+        <v-card-title>
+          <v-icon
+            large
+            left
+          >
+          mdi-chart-pie
+          </v-icon>
+          <span class="text-h6 font-weight-bold">% de Ejecución por Generica 2.6</span>
+        </v-card-title>
+        <v-card-subtitle class="pb-0">
+          ADQUISICION DE ACTIVOS NO FINANCIEROS
+        </v-card-subtitle>
+        <v-card-text class="text-h4 font-weight-bold text-lg-center">
+          <v-progress-circular
+            show-value
+            :rotate="270"
+            :size="320"
+            :width="60"
+            :thickness="0.4"
+            :value="this.ejec_gen[4][4]"
+            color="lime accent-4"
+          >
+            {{ parseFloat(this.ejec_gen[4][4]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
+          </v-progress-circular>
+          
+        </v-card-text>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+            <v-icon left>
+              mdi-cash-multiple
+            </v-icon>
+            <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[4][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[4][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[4][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[4][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[4][1]-this.ejec_gen[4][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        </v-card>
+      </v-flex>
+    </v-layout>
+
+
+    <v-layout class="elevation-9 pa-2">
+      <v-flex xs4 class="mt-0 mr-2 elevation-10">
+        <v-card
+        class="mx-auto"
+        color="light-blue darken-4"
+        dark
+        height="500"
+        >
+        <v-card-title>
+          <v-icon
+            large
+            left
+          >
+          mdi-chart-pie
+          </v-icon>
+          <span class="text-h6 font-weight-bold">% de Ejecución por generica 2.1</span>
+        </v-card-title>
+        <v-card-subtitle class="pb-0">
+          PERSONAL Y OBLIGACIONES SOCIALES
+        </v-card-subtitle>
+        <v-card-text class="text-h4 font-weight-bold text-lg-center">
+          <v-progress-circular
+            show-value
+            :rotate="270"
+            :size="290"
+            :width="40"
+            :thickness="0.4"
+            :value="this.ejec_gen[0][4]"
+            color="lime accent-4"
+          >
+            {{ parseFloat(this.ejec_gen[0][4]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
+          </v-progress-circular>
+          
+        </v-card-text>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+            <v-icon left>
+              mdi-cash-multiple
+            </v-icon>
+            <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[0][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[0][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[0][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[0][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[0][1]-this.ejec_gen[0][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+
+
+        </v-card>
+      </v-flex>
+
+
+      <v-flex xs4 class="mt-0 mr-2 elevation-10">
+        <v-card
+        class="mx-auto"
+        color="light-blue darken-4"
+        dark
+        height="500"
+        >
+        <v-card-title>
+          <v-icon
+            large
+            left
+          >
+          mdi-chart-pie
+          </v-icon>
+          <span class="text-h6 font-weight-bold">% de Ejecución por generica 2.2</span>
+        </v-card-title>
+        <v-card-subtitle class="pb-0">
+          PENSIONES Y OTRAS PRESTACIONES SOCIALES
+        </v-card-subtitle>
+        <v-card-text class="text-h4 font-weight-bold text-lg-center">
+          <v-progress-circular
+            show-value
+            :rotate="270"
+            :size="290"
+            :width="40"
+            :thickness="0.4"
+            :value="this.ejec_gen[1][4]"
+            color="lime accent-4"
+          >
+            {{ parseFloat(this.ejec_gen[1][4]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
+          </v-progress-circular>
+          
+        </v-card-text>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+            <v-icon left>
+              mdi-cash-multiple
+            </v-icon>
+            <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[1][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[1][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[1][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[1][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[1][1]-this.ejec_gen[1][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+
+
+        </v-card>
+      </v-flex>
+
+      <v-flex xs4 class="mt-0 mr-2 elevation-10">
+        <v-card
+        class="mx-auto"
+        color="light-blue darken-4"
+        dark
+        height="500"
+        >
+        <v-card-title>
+          <v-icon
+            large
+            left
+          >
+          mdi-chart-pie
+          </v-icon>
+          <span class="text-h6 font-weight-bold">% de Ejecución por generica 2.5</span>
+        </v-card-title>
+        <v-card-subtitle class="pb-0">
+          OTROS GASTOS
+        </v-card-subtitle>
+        <v-card-text class="text-h4 font-weight-bold text-lg-center">
+          <v-progress-circular
+            show-value
+            :rotate="270"
+            :size="290"
+            :width="40"
+            :thickness="0.4"
+            :value="this.ejec_gen[3][4]"
+            color="lime accent-4"
+          >
+            {{ parseFloat(this.ejec_gen[3][4]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
+          </v-progress-circular>
+          
+        </v-card-text>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+            <v-icon left>
+              mdi-cash-multiple
+            </v-icon>
+            <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[3][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[3][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[3][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[3][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        <v-chip class="ma-1" color="deep-purple darken-4" label>
+          <v-icon left>
+            mdi-cash-multiple
+          </v-icon>
+          <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[3][1]-this.ejec_gen[3][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
+        </v-chip>
+        </v-card>
+      </v-flex>
+    </v-layout>
+
+
     </v-container>
+
+
+
+
+
   </template>
   
   <script>
@@ -530,13 +904,24 @@
       mounted(){
         this.get_totales();
         this.get_ejec_fuente();
+        this.get_ejec_generica();
+
       },
       
       data: () => ({
         ds_tot:[],
         ds_eje:[],
+        ds_eje_gen:[],
         ro_eje:'',
         ejec:[
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0]
+        ],
+        eje_23:'',
+        ejec_gen:[
         [0,0,0,0,0],
         [0,0,0,0,0],
         [0,0,0,0,0],
@@ -554,6 +939,14 @@
             }
           }
         },
+        limpiar_gen: function(){
+          for(var i=0;i<5;i++){
+            for(var k=0;k<5;k++){
+              this.ejec_gen[i][k]=0;
+            }
+          }
+        },
+
         async get_totales(){
             try {
                 let datos=await axios.get(url+'totales')
@@ -609,6 +1002,56 @@
                 console.log(error);
             }
         },
+
+        async get_ejec_generica(){
+            try {
+                let datos=await axios.get(url+'ejec_generica')
+                this.ds_eje_gen= await datos.data;
+                this.limpiar_gen();
+                for(var i of this.ds_eje_gen){
+                  console.log(i.cod_generica);
+                  switch(i.cod_generica){
+                    case 1:
+                          
+                          this.ejec_gen[0][0]=i.pia;
+                          this.ejec_gen[0][1]=i.pim;
+                          this.ejec_gen[0][2]=i.certif;
+                          this.ejec_gen[0][3]=i.deven;
+                          this.ejec_gen[0][4]=i.ejec;break;
+                    
+                    case 2:this.ejec_gen[1][0]=i.pia;
+                          this.ejec_gen[1][1]=i.pim;
+                          this.ejec_gen[1][2]=i.certif;
+                          this.ejec_gen[1][3]=i.deven;
+                          this.ejec_gen[1][4]=i.ejec;break;
+
+                    case 3:this.eje_23=i.ejec;
+                          this.ejec_gen[2][0]=i.pia;
+                          this.ejec_gen[2][1]=i.pim;
+                          this.ejec_gen[2][2]=i.certif;
+                          this.ejec_gen[2][3]=i.deven;
+                          this.ejec_gen[2][4]=i.ejec;break;
+                          
+                    case 5:this.ejec_gen[3][0]=i.pia;
+                          this.ejec_gen[3][1]=i.pim;
+                          this.ejec_gen[3][2]=i.certif;
+                          this.ejec_gen[3][3]=i.deven;
+                          this.ejec_gen[3][4]=i.ejec;break;
+
+                    case 6:this.ejec_gen[4][0]=i.pia;
+                          this.ejec_gen[4][1]=i.pim;
+                          this.ejec_gen[4][2]=i.certif;
+                          this.ejec_gen[4][3]=i.deven;
+                          this.ejec_gen[4][4]=i.ejec;break;
+                  }
+                }
+                console.log('ro:'+this.ejec[0][4]);
+                console.log(this.ejec);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+
       }
     }
   </script>
