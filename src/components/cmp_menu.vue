@@ -7,12 +7,8 @@
         >
     
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-    
           <v-toolbar-title>EJECUCION PRESUPUESTAL 2022</v-toolbar-title>
-    
           <v-spacer></v-spacer>
-    
-          
         </v-app-bar>
     
         <v-navigation-drawer
@@ -72,39 +68,27 @@
             </v-list-item>
             </router-link>
     
-            <router-link style="text-decoration: none; color: inherit;" to="/por_meta_tarea">
+            <router-link style="text-decoration: none; color: inherit;" to="/meta_fte_gen">
             <v-list-item link>
             <v-btn class="cyan lighten-2" rounded block>
               <v-list-item-icon>
                 <v-icon>mdi-ballot</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Por Meta/Tarea</v-list-item-title>
+              <v-list-item-title>Meta/fuente/gen.</v-list-item-title>
             </v-btn>
             </v-list-item>
             </router-link>
     
-            <router-link style="text-decoration: none; color: inherit;" to="/por_clasificador">
+            <router-link style="text-decoration: none; color: inherit;" to="/prg_gen_fte_espec">
             <v-list-item link>
             <v-btn class="cyan lighten-2" rounded block>
               <v-list-item-icon>
                 <v-icon>mdi-ballot</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Por Clasificador</v-list-item-title>
+              <v-list-item-title>Por Meta Clasif.</v-list-item-title>
             </v-btn>
             </v-list-item>
             </router-link>
-    
-            <router-link style="text-decoration: none; color: inherit;" to="/por_meta_clasificador">
-            <v-list-item link>
-            <v-btn class="cyan lighten-2" rounded block>
-              <v-list-item-icon>
-                <v-icon>mdi-ballot</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Meta/Clasif.</v-list-item-title>
-            </v-btn>
-            </v-list-item>
-            </router-link>
-    
             
     
           </v-list>

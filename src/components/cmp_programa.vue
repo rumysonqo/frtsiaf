@@ -9,6 +9,7 @@
                     item-value="cod_programa"
                     label="Seleccione un programa"
                     outlined
+                    dense
                     @change="get_totales_programa(), get_ejec_fuente_programa(), get_ejec_generica_programa()"
                   >
                   </v-select>
@@ -41,7 +42,7 @@
             <v-card-subtitle class="pb-0">
               Presupuesto Institucional de Apertura
             </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-right">
+            <v-card-text class="text-h5 font-weight-bold text-lg-right">
               S/. {{ parseFloat(this.ds_tot[0].pia).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
             </v-card-text>
     
@@ -68,7 +69,7 @@
             <v-card-subtitle class="pb-0">
               Presupuesto Institucional Modificado
             </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-right">
+            <v-card-text class="text-h5 font-weight-bold text-lg-right">
               S/. {{ parseFloat(this.ds_tot[0].pim).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
             </v-card-text>
     
@@ -94,7 +95,7 @@
             <v-card-subtitle class="pb-0">
               Monto Certificado
             </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-right">
+            <v-card-text class="text-h5 font-weight-bold text-lg-right">
               S/. {{ parseFloat(this.ds_tot[0].certif).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
             </v-card-text>
     
@@ -120,7 +121,7 @@
             <v-card-subtitle class="pb-0">
               Monto Devengado
             </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-right">
+            <v-card-text class="text-h5 font-weight-bold text-lg-right">
               S/. {{ parseFloat(this.ds_tot[0].devengado).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
             </v-card-text>
     
@@ -146,7 +147,7 @@
             <v-card-subtitle class="pb-0">
               Saldo Presupuestal
             </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-right">
+            <v-card-text class="text-h5 font-weight-bold text-lg-right">
               S/. {{ parseFloat(this.ds_tot[0].saldo).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}
             </v-card-text>
     
@@ -545,369 +546,404 @@
           </v-flex>
         </v-layout>
     
-    
         <v-layout class="elevation-1 pa-2">
           <v-flex>
             <spam class="text-h5 font-weight-light">% de Ejecución por Generica de Gasto </spam>
           </v-flex>
         </v-layout>
     
+        <v-layout class="elevation-5 pa-0">
+      
+          <v-tabs
+          background-color="light-blue darken-4"
+          center-active
+          dark
+          >
     
-        <v-layout class="elevation-9 pa-2">
-          
+          <v-tabs-slider color="teal accent-2"></v-tabs-slider>
     
-    
-          <v-flex xs6 class="mt-0 mr-2 elevation-10">
-            <v-card
-            class="mx-auto"
-            color="light-blue darken-4"
-            dark
-            height="500"
-            >
-            <v-card-title>
-              <v-icon
-                large
-                left
-              >
-              mdi-chart-pie
-              </v-icon>
-              <span class="text-h6 font-weight-bold">% de Ejecución por Generica 2.3</span>
-            </v-card-title>
-            <v-card-subtitle class="pb-0">
-              BIENES Y SERVICIOS
-            </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-center">
-              <v-progress-circular
-                show-value
-                :rotate="270"
-                :size="320"
-                :width="60"
-                :thickness="0.4"
-                :value="this.eje_23"
-                color="lime accent-4"
-              >
-                {{ parseFloat(this.eje_23).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
-              </v-progress-circular>
+            <v-tab href="#fte1">
+              <spam class="font-weight-bold">Recursos Ordinarios (RO)</spam>
               
-            </v-card-text>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-                <v-icon left>
-                  mdi-cash-multiple
-                </v-icon>
-                <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[2][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
+            </v-tab>
     
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[2][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[2][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[2][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[2][1]-this.ejec_gen[2][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
+            <v-tab-item value="fte1">
+              <v-layout class="elevation-5 pa-5">
+                <v-flex  xs12>
+                
+                  <v-simple-table dense class="elevation-5">
+                  <template v-slot:default>
+                    <thead>
+                      <tr>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Generica
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIA
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIM
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Certificado
+                        </th>
+                        <th class=" text-left teal darken-3 white--text text-center">
+                          Devengado
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por certificar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por devengar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          % Ejec.
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="item in ds_fte1"
+                        :key="item.cod_fuente"
+                      >
+                        <td>{{ item.generica }}</td>
+                        <td class="text-right">{{ parseFloat(item.pia).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.pim).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.certif).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.deven).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_cert).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_dev).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+    
+                        <td>
+                            <div class="pa-2">
+                            <v-progress-circular
+                            show-value
+                            :rotate="270"
+                            :size="170"
+                            :width="40"
+                            :value="item.ejec"
+                            color="teal darken-3"
+                          >
+                          <span class="text-h6 font-weight-bold">
+                            {{ parseFloat(item.ejec).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}%
+                          </span>
+                          </v-progress-circular>
+                        </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+                
+                </v-flex>
+              </v-layout>
+            </v-tab-item>
+    
+            <v-tab href="#fte2">
+              <spam class="font-weight-bold">Recursos Directamente Recaudados (RDR)</spam>
+            </v-tab>
+            <v-tab-item value="fte2">
+              <v-layout class="elevation-5 pa-5">
+                <v-flex  xs12>
+                
+                  <v-simple-table dense class="elevation-5">
+                  <template v-slot:default>
+                    <thead>
+                      <tr>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Generica
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIA
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIM
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Certificado
+                        </th>
+                        <th class=" text-left teal darken-3 white--text text-center">
+                          Devengado
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por certificar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por devengar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          % Ejec.
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="item in ds_fte2"
+                        :key="item.cod_fuente"
+                      >
+                        <td>{{ item.generica }}</td>
+                        <td class="text-right">{{ parseFloat(item.pia).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.pim).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.certif).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.deven).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_cert).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_dev).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td>
+                            <div class="pa-2">
+                            <v-progress-circular
+                            show-value
+                            :rotate="270"
+                            :size="170"
+                            :width="40"
+                            :value="item.ejec"
+                            color="teal darken-3"
+                          >
+                          <span class="text-h6 font-weight-bold">
+                            {{ parseFloat(item.ejec).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}%
+                          </span>
+                          </v-progress-circular>
+                        </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+                
+                </v-flex>
+              </v-layout>
+            </v-tab-item>
+    
+            <v-tab href="#fte3">
+              <spam class="font-weight-bold">Recursos por Operaciones Oficiales de Credito</spam>
+            </v-tab>
+    
+            <v-tab-item value="fte3">
+              <v-layout class="elevation-5 pa-5">
+                <v-flex  xs12>
+                
+                  <v-simple-table dense class="elevation-5">
+                  <template v-slot:default>
+                    <thead>
+                      <tr>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Generica
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIA
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIM
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Certificado
+                        </th>
+                        <th class=" text-left teal darken-3 white--text text-center">
+                          Devengado
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por certificar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por devengar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          % Ejec.
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="item in ds_fte3"
+                        :key="item.cod_fuente"
+                      >
+                        <td>{{ item.generica }}</td>
+                        <td class="text-right">{{ parseFloat(item.pia).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.pim).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.certif).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.deven).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_cert).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_dev).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td>
+                            <div class="pa-2">
+                            <v-progress-circular
+                            show-value
+                            :rotate="270"
+                            :size="170"
+                            :width="40"
+                            :value="item.ejec"
+                            color="teal darken-3"
+                          >
+                          <span class="text-h6 font-weight-bold">
+                            {{ parseFloat(item.ejec).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}%
+                          </span>
+                          </v-progress-circular>
+                        </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+                
+                </v-flex>
+              </v-layout>
+            </v-tab-item>
     
     
-            </v-card>
-          </v-flex>
+            <v-tab href="#fte4">
+              <spam class="font-weight-bold">Donaciones y Transferencias</spam>
+            </v-tab>
     
-          <v-flex xs6 class="mt-0 mr-2 elevation-10">
-            <v-card
-            class="mx-auto"
-            color="light-blue darken-4"
-            dark
-            height="500"
-            >
-            <v-card-title>
-              <v-icon
-                large
-                left
-              >
-              mdi-chart-pie
-              </v-icon>
-              <span class="text-h6 font-weight-bold">% de Ejecución por Generica 2.6</span>
-            </v-card-title>
-            <v-card-subtitle class="pb-0">
-              ADQUISICION DE ACTIVOS NO FINANCIEROS
-            </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-center">
-              <v-progress-circular
-                show-value
-                :rotate="270"
-                :size="320"
-                :width="60"
-                :thickness="0.4"
-                :value="this.ejec_gen[4][4]"
-                color="lime accent-4"
-              >
-                {{ parseFloat(this.ejec_gen[4][4]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
-              </v-progress-circular>
-              
-            </v-card-text>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-                <v-icon left>
-                  mdi-cash-multiple
-                </v-icon>
-                <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[4][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
+            <v-tab-item value="fte4">
+              <v-layout class="elevation-5 pa-5">
+                <v-flex  xs12>
+                
+                  <v-simple-table dense class="elevation-5">
+                  <template v-slot:default>
+                    <thead>
+                      <tr>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Generica
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIA
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIM
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Certificado
+                        </th>
+                        <th class=" text-left teal darken-3 white--text text-center">
+                          Devengado
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por certificar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por devengar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          % Ejec.
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="item in ds_fte4"
+                        :key="item.cod_fuente"
+                      >
+                        <td>{{ item.generica }}</td>
+                        <td class="text-right">{{ parseFloat(item.pia).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.pim).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.certif).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.deven).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_cert).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_dev).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td>
+                            <div class="pa-2">
+                            <v-progress-circular
+                            show-value
+                            :rotate="270"
+                            :size="170"
+                            :width="40"
+                            :value="item.ejec"
+                            color="teal darken-3"
+                          >
+                          <span class="text-h6 font-weight-bold">
+                            {{ parseFloat(item.ejec).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}%
+                          </span>
+                          </v-progress-circular>
+                        </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+                
+                </v-flex>
+              </v-layout>
+            </v-tab-item>
     
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[4][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[4][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[4][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[4][1]-this.ejec_gen[4][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            </v-card>
-          </v-flex>
+            <v-tab href="#fte5">
+              <spam class="font-weight-bold">Recursos Determinados</spam>
+            </v-tab>
+    
+            <v-tab-item value="fte5">
+              <v-layout class="elevation-5 pa-5">
+                <v-flex  xs12>
+                
+                  <v-simple-table dense class="elevation-5">
+                  <template v-slot:default>
+                    <thead>
+                      <tr>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Generica
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIA
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          PIM
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Certificado
+                        </th>
+                        <th class=" text-left teal darken-3 white--text text-center">
+                          Devengado
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por certificar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          Saldo (por devengar)
+                        </th>
+                        <th class="text-left teal darken-3 white--text text-center">
+                          % Ejec.
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="item in ds_fte5"
+                        :key="item.cod_fuente"
+                      >
+                        <td>{{ item.generica }}</td>
+                        <td class="text-right">{{ parseFloat(item.pia).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.pim).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.certif).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right">{{ parseFloat(item.deven).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_cert).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td class="text-right font-weight-bold">{{ parseFloat(item.sal_dev).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} </td>
+                        <td>
+                            <div class="pa-2">
+                            <v-progress-circular
+                            show-value
+                            :rotate="270"
+                            :size="170"
+                            :width="40"
+                            :value="item.ejec"
+                            color="teal darken-3"
+                          >
+                          <span class="text-h6 font-weight-bold">
+                            {{ parseFloat(item.ejec).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}%
+                          </span>
+                          </v-progress-circular>
+                        </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+                
+                </v-flex>
+              </v-layout>
+            </v-tab-item>
+    
+          </v-tabs>
+    
         </v-layout>
-    
-    
-        <v-layout class="elevation-9 pa-2">
-          <v-flex xs4 class="mt-0 mr-2 elevation-10">
-            <v-card
-            class="mx-auto"
-            color="light-blue darken-4"
-            dark
-            height="500"
-            >
-            <v-card-title>
-              <v-icon
-                large
-                left
-              >
-              mdi-chart-pie
-              </v-icon>
-              <span class="text-h6 font-weight-bold">% de Ejecución por generica 2.1</span>
-            </v-card-title>
-            <v-card-subtitle class="pb-0">
-              PERSONAL Y OBLIGACIONES SOCIALES
-            </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-center">
-              <v-progress-circular
-                show-value
-                :rotate="270"
-                :size="290"
-                :width="40"
-                :thickness="0.4"
-                :value="this.ejec_gen[0][4]"
-                color="lime accent-4"
-              >
-                {{ parseFloat(this.ejec_gen[0][4]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
-              </v-progress-circular>
-              
-            </v-card-text>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-                <v-icon left>
-                  mdi-cash-multiple
-                </v-icon>
-                <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[0][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-    
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[0][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[0][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[0][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[0][1]-this.ejec_gen[0][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-    
-    
-            </v-card>
-          </v-flex>
-    
-    
-          <v-flex xs4 class="mt-0 mr-2 elevation-10">
-            <v-card
-            class="mx-auto"
-            color="light-blue darken-4"
-            dark
-            height="500"
-            >
-            <v-card-title>
-              <v-icon
-                large
-                left
-              >
-              mdi-chart-pie
-              </v-icon>
-              <span class="text-h6 font-weight-bold">% de Ejecución por generica 2.2</span>
-            </v-card-title>
-            <v-card-subtitle class="pb-0">
-              PENSIONES Y OTRAS PRESTACIONES SOCIALES
-            </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-center">
-              <v-progress-circular
-                show-value
-                :rotate="270"
-                :size="290"
-                :width="40"
-                :thickness="0.4"
-                :value="this.ejec_gen[1][4]"
-                color="lime accent-4"
-              >
-                {{ parseFloat(this.ejec_gen[1][4]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
-              </v-progress-circular>
-              
-            </v-card-text>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-                <v-icon left>
-                  mdi-cash-multiple
-                </v-icon>
-                <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[1][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-    
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[1][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[1][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[1][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[1][1]-this.ejec_gen[1][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-    
-    
-            </v-card>
-          </v-flex>
-    
-          <v-flex xs4 class="mt-0 mr-2 elevation-10">
-            <v-card
-            class="mx-auto"
-            color="light-blue darken-4"
-            dark
-            height="500"
-            >
-            <v-card-title>
-              <v-icon
-                large
-                left
-              >
-              mdi-chart-pie
-              </v-icon>
-              <span class="text-h6 font-weight-bold">% de Ejecución por generica 2.5</span>
-            </v-card-title>
-            <v-card-subtitle class="pb-0">
-              OTROS GASTOS
-            </v-card-subtitle>
-            <v-card-text class="text-h4 font-weight-bold text-lg-center">
-              <v-progress-circular
-                show-value
-                :rotate="270"
-                :size="290"
-                :width="40"
-                :thickness="0.4"
-                :value="this.ejec_gen[3][4]"
-                color="lime accent-4"
-              >
-                {{ parseFloat(this.ejec_gen[3][4]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}} %
-              </v-progress-circular>
-              
-            </v-card-text>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-                <v-icon left>
-                  mdi-cash-multiple
-                </v-icon>
-                <span class="text-h7 font-weight-light">PIA: S/. {{ parseFloat(this.ejec_gen[3][0]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-    
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">PIM: S/. {{ parseFloat(this.ejec_gen[3][1]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Certificado: S/. {{ parseFloat(this.ejec_gen[3][2]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">Devengado: S/. {{ parseFloat(this.ejec_gen[3][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            <v-chip class="ma-1" color="deep-purple darken-4" label>
-              <v-icon left>
-                mdi-cash-multiple
-              </v-icon>
-              <span class="text-h7 font-weight-light">SALDO: S/. {{ parseFloat(this.ejec_gen[3][1]-this.ejec_gen[3][3]).toLocaleString('en-us', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}}</span>
-            </v-chip>
-            </v-card>
-          </v-flex>
-        </v-layout>
-    
-    
+
         </v-container>
-    
-    
-    
     
     
       </template>
@@ -923,6 +959,11 @@
             this.get_totales_programa();
             this.get_ejec_fuente_programa();
             this.get_ejec_generica_programa();
+            this.get_ejec_prg_fte_gen(1,1);
+            this.get_ejec_prg_fte_gen(1,2);
+            this.get_ejec_prg_fte_gen(1,3);
+            this.get_ejec_prg_fte_gen(1,4);
+            this.get_ejec_prg_fte_gen(1,5);
             
     
           },
@@ -934,6 +975,11 @@
             ro_eje:'',
             cod_prg:1,
             ds_prog:[],
+            ds_fte1:[],
+            ds_fte2:[],
+            ds_fte3:[],
+            ds_fte4:[],
+            ds_fte5:[],
             ejec:[
             [0,0,0,0,0],
             [0,0,0,0,0],
@@ -1081,6 +1127,24 @@
                     console.log(error);
                 }
             },
+
+            async get_ejec_prg_fte_gen($prg,$fte){
+            try {
+                let datos=await axios.get(url+'ejec_prg_fte_gen/'+$prg+'/'+$fte)
+                switch($fte){
+                  case 1:this.ds_fte1=await datos.data;break;
+                  case 2:this.ds_fte2=await datos.data;break;
+                  case 3:this.ds_fte3=await datos.data;break;
+                  case 4:this.ds_fte4=await datos.data;break;
+                  case 5:this.ds_fte5=await datos.data;break;
+                }
+                //this.ds_siaf= await datos.data;
+                //console.log('ds_siaf');
+                //console.log(this.ds_siaf);
+            } catch (error) {
+                console.log(error);
+            }
+        }
     
           }
         }
